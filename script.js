@@ -1,43 +1,26 @@
-document.addEventListener('DOMContentLoaded', function(){
-    const botaoDeAcessibilidade = document.getElementById('botao-acessibilidade')
-    const opcoesDeAcessibilidade = document.getElementById('opcoes-acessibilidade')
- 
-    botaoDeAcessibilidade.addEventListener('click', function (){
-     botaoDeAcessibilidade.classList.toggle('rotacao-botao');
-     opcoesDeAcessibilidade.classList.toggle('apresenta-lista')
- 
-     const botaoSelecionado = botaoDeAcessibilidade.getAttribute('aria-expanded') === 'true';
-     botaoDeAcessibilidade.setAttribute('aria-expanded', !botaoSelecionado)
-   
-    })
- 
-     const aumentaFonteBotao = document.getElementById('aumentar-fonte');
-     const diminuiFonteBotao = document.getElementById('diminuir-fonte');
-     
-     const alternaContraste = document.getElementById('alterna-contraste')
- 
-     let tamanhoAtualFonte = 1;
- 
-     aumentaFonteBotao.addEventListener('click', function(){
-         tamanhoAtualFonte += 0.1;
-         document.body.style.fontSize = `${tamanhoAtualFonte}rem`
- 
-     })
- 
-     diminuiFonteBotao.addEventListener('click', function(){
-         tamanhoAtualFonte -= 0.1;
-         document.body.style.fontSize = `${tamanhoAtualFonte}rem`
- 
-     })
- 
-     alternaContraste.addEventListener('click', function(){
-         document.body.classList.toggle('alto-contraste')
-     })
- 
- 
- })
- 
- ScrollReveal().reveal('#inicio', { delay: 500 });
- ScrollReveal().reveal('#tropicalia', { delay: 500 });
- ScrollReveal().reveal('#galeria', { delay: 500 });
- ScrollReveal().reveal('#contato', { delay: 500 });
+document.addEventListener('DOMContentLoaded', function() {
+    const botaoAlternaContraste = document.getElementById('alterna-contraste');
+    const body = document.body;
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+    const formulario = document.querySelector('.formulario');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const botaoInicio = document.querySelector('.botao-inicio');
+    const botoesPrimarios = document.querySelectorAll('.btn-primary');
+    const secaoTropicalia = document.getElementById('tropicalia');
+    const secaoGaleria = document.getElementById('galeria');
+    const fundoGaleria = document.querySelector('.fundo-galeria');
+
+    botaoAlternaContraste.addEventListener('click', function() {
+        body.classList.toggle('alto-contraste');
+        if (header) header.classList.toggle('alto-contraste');
+        if (footer) footer.classList.toggle('alto-contraste');
+        if (formulario) formulario.classList.toggle('alto-contraste');
+        navLinks.forEach(link => link.classList.toggle('alto-contraste'));
+        if (botaoInicio) botaoInicio.classList.toggle('alto-contraste');
+        botoesPrimarios.forEach(botao => botao.classList.toggle('alto-contraste'));
+        if (secaoTropicalia) secaoTropicalia.classList.toggle('alto-contraste');
+        if (secaoGaleria) secaoGaleria.classList.toggle('alto-contraste');
+        if (fundoGaleria) fundoGaleria.classList.toggle('alto-contraste');
+    });
+});
